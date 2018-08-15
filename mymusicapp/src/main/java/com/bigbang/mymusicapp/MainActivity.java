@@ -62,9 +62,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "getMusic: ");
         for (int i = 0; i < files.length; i++) {
             String name = files[i].getName();
+            //截取后缀
             String substring = name.substring(files[i].getName().length() - 3, files[i].getName().length());
             if (substring.equalsIgnoreCase("mp3")) {
+                // 存储歌曲名
                 mList.add(files[i].getName());
+                // 存储歌曲路径
                 pathList.add(files[i].getAbsolutePath());
             }
         }

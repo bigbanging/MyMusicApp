@@ -52,7 +52,7 @@ public class MyMusicService extends Service {
             mMediaPlayer.pause();
             isPlaying = 1;
         } else if (tag.equals("start")) {
-            //第一次进入点击播放 默认播放第一首
+            //第一次进入 点击播放按钮 则默认播放第一首
             if (isPlaying == -1) {
                 play(0);
             } else {
@@ -74,12 +74,12 @@ public class MyMusicService extends Service {
             mMediaPlayer.prepare();
             mMediaPlayer.start();
             // 一首播放完 播放下一首
-            /*mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-
+                    play(index+1);
                 }
-            });*/
+            });
             MainActivity.mProgressBar.setMax(mMediaPlayer.getDuration());
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,7 +88,6 @@ public class MyMusicService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
